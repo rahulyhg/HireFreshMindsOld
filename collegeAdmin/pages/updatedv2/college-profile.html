@@ -1,0 +1,71 @@
+<script>
+$(document).ready(function(e){
+	//block body load until all dynamic contents are loaded on the page
+});
+
+</script>
+
+<div id="container" style="margin-left:10%;margin-right:10%;padding-bottom:100px">
+	<div id = "messages" style="display:none;">Nice!</div>
+	<h2>Edit your College Profile</h2>
+	<form style="margin-top:5%;margin-right:10%;">
+	  <div class="form-group">
+		<label for="collegeName">College name</label>
+		<input type="text" class="form-control" id="collegeName" aria-describedby="nameHelp" placeholder="Enter college name">
+		<small id="nameHelp" class="form-text text-muted">You cannot edit your college name</small>
+	  </div>
+	  <div class="form-group">
+		<label for="collegeEmail">Email address</label>
+		<input type="email" class="form-control" id="collegeEmail" aria-describedby="emailHelp" placeholder="Enter email">
+		<small id="collegeEmail" class="form-text text-muted">You cannot edit your registered email</small>
+	  </div>
+	  <!-- Commenting this. Maybe we can use this in future
+	  <div class="form-group">
+		<label for="exampleSelect1">Example select</label>
+		<select class="form-control" id="exampleSelect1" aria-describedby="branchHelp">
+		  <option>1</option>
+		  <option>2</option>
+		  <option>3</option>
+		  <option>4</option>
+		  <option>5</option>
+		</select>
+	  </div>
+		-->
+	  <div class="form-group">
+		<label for="coursesOffered">Bachelor's Courses offered</label>
+		<p id="previouslySelectedCoursesHeading" style="display:none;">The Following courses are currently enrolled</p>
+		<p id="previouslySelectedCourses" style="display:none;"></p>
+		<select multiple class="form-control" id="coursesOffered" aria-describedby="coursesHelp" size=9 style='height: 100%;'>
+			<option value="Aeronautical Engineering">Aeronautical Engineering</option>
+			<option value="Electronics and Communication Engineering (ECE)">Electronics and Communication Engineering (ECE)</option>
+			<option value="Electronics and Electrical Engineering (EEE)">Electronics and Electrical Engineering (EEE)</option>
+			<option value="Computer Science and Engineering (CSE)">Computer Science and Engineering (CSE)</option>
+			<option value="Information Technology (IT)">Information Technology (IT)</option>
+			<option value="Mechanical Engineering (Mech.)">Mechanical Engineering (Mech.)</option>
+			<option value="Civil Engineering (CE)">Civil Engineering (CE)</option>
+			<option value="Chemical Engineering (Chem.)">Chemical Engineering (Chem.)</option>
+			<option value="Bio-Technology">Bio-Technology</option>
+		</select>
+		<small id="coursesHelp" class="form-text text-muted">Select various courses offered in your college<br>Hold ]ctrl] key to select multiple options</small>
+	  </div>
+	  <div class="form-group">
+		<label for="collegeDesc">Brief Description of the college</label>
+		<textarea class="form-control" id="collegeDesc" rows="3"></textarea>
+	  </div>
+	  <div class="form-group">
+		<label for="collegeBrochure">College Brochure</label>
+		<input type="file" class="form-control-file" id="collegeBrochure" aria-describedby="brochureHelp">
+		<small id="brochureHelp" class="form-text text-muted">Please Provide College Brochure in PDF/DOC/DOCX formats only</small>
+	  </div>
+	  <div class="form-group">
+		<label for="collegeAddress">Complete College Address</label>
+		<textarea class="form-control" id="collegeAddress" rows="3"></textarea>
+	  </div>
+	  <div class="form-group">
+		<label for="collegePhone">Phone Number</label>
+		<input type="number" class="form-control" maxlength="10" id="collegePhone" aria-describedby="phoneHelp" placeholder="Enter phone number">
+		<small id="phoneHelp" class="form-text text-muted">This contact number will be publicly displayed so that people can contact your college</small>
+	  </div>
+	  <button type="submit" onclick="updateProfileDetails();" class="btn btn-primary btn-lg pull-right">Submit</button>
+	</form>
+</div>
