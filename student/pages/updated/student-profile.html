@@ -1,0 +1,36 @@
+<script>
+$(document).ready(function(e){
+	//block body load until all dynamic contents are loaded on the page
+});
+
+</script>
+
+<div id="container" style="margin-left:10%;margin-right:10%;padding-bottom:100px">
+	<div id = "messages" style="display:none;">Nice!</div>
+	<h2>Edit your Profile</h2>
+	<form style="margin-top:5%;margin-right:10%;">
+	  <div class="form-group">
+		<label for="studentSummary">Summary</label>
+		<textarea class="form-control" id="studentSummary" rows="3"></textarea>
+	  </div>
+	  <div class="form-group">
+		<label for="studentSummary">Work Experience</label>
+		<a href="#" class="form-control" id="studentWorkExperience"></textarea>
+	  </div>
+	  <div class="form-group">
+		<label for="collegeBrochure">College Brochure</label>
+		<input type="file" class="form-control-file" id="collegeBrochure" aria-describedby="brochureHelp">
+		<small id="brochureHelp" class="form-text text-muted">Please Provide College Brochure in PDF/DOC/DOCX formats only</small>
+	  </div>
+	  <div class="form-group">
+		<label for="collegeAddress">Complete College Address</label>
+		<textarea class="form-control" id="collegeAddress" rows="3"></textarea>
+	  </div>
+	  <div class="form-group">
+		<label for="collegePhone">Phone Number</label>
+		<input type="number" class="form-control" maxlength="10" id="collegePhone" aria-describedby="phoneHelp" placeholder="Enter phone number">
+		<small id="phoneHelp" class="form-text text-muted">This contact number will be publicly displayed so that people can contact your college</small>
+	  </div>
+	  <button type="submit" onclick="updateProfileDetails();" class="btn btn-primary btn-lg pull-right">Submit</button>
+	</form>
+</div>
