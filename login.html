@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>User Login</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+		<script src="lib/jquery-2.2.4.min.js"></script>
+		<script src="lib/jquery-ui.js"></script>
+		<link href="lib/jquery-ui.css" rel="Stylesheet"></link>
+		<link href="lib/bootstrap.css" rel="Stylesheet"></link>
+
+		<script src="lib/jquery.dataTables.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
+	
+		<script src="lib/dataTables.bootstrap.min.js"></script>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+    </head>
+
+    <body>
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+			  <div class="modal-header" style="background-color: coral;">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">College Name not found</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>Please select a college name only from the dropdown list to proceed!</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+
+		  </div>
+		</div>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+				<div class="row">
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-3">
+						<div class="container">
+							
+							<div class="row">
+								<div class="col-sm-5 text">
+									<h1><strong>User</strong> Login</h1>
+									<div class="description">
+										<p>
+											Please Login to your account to continue.
+										</p>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-box">
+										<div class="form-top">
+											<div class="form-top-left">
+												<h3>Login to you account</h3>
+												<p>Enter username and password to log on:</p>
+											</div>
+											<div class="form-top-right">
+												<i class="fa fa-lock"></i>
+											</div>
+										</div>
+										<div class="form-bottom">
+											<form action="loginHandler.php" method="post" role="form" class="login-form">
+												<div class="form-group">
+													<label class="sr-only" for="form-username">Username</label>
+													<input type="text" placeholder="Username" class="form-username form-control" name="username" id="username">
+												</div>
+												<div class="form-group">
+													<label class="sr-only" for="form-password">Password</label>
+													<input type="password" placeholder="Password" class="form-password form-control" name="password" id="password">
+												</div>
+												<button type="submit" id="submit" class="btn">Sign in</button>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-2"> <!-- Signup form -->
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-5 text">
+									<h1><strong>New User?</strong> Sign Up</h1>
+									<div class="description">
+										<p>
+											Complete the below form and click submit.
+										</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-box">
+										<div class="form-top">
+											<div class="form-top-left">
+												<h3>Registration</h3>
+												<p>All fields are required.</p>
+											</div>
+											<div class="form-top-right">
+												<i class="fa fa-user"></i>
+											</div>
+										</div>
+										<div class="form-bottom">
+											<h3 style="color:#d9edf7;display:none;" id="errorMsg">The following error(s) have occured: </h3>
+											<div id="formError" style="display:none;">
+												
+											</div>
+											<div id="phpMsges" style="display:none;">
+												
+											</div>
+											<form method="post" role="form" class="login-form">
+												<div class="form-group">
+													<label for="usrName" class="sr-only">Name</label>
+													<input type="text" class="form-control signup-req" name="usrName" id="usrName" placeholder="Full name">
+												</div>
+												<div class="form-group">
+													<label for="email" class="sr-only">Email address:</label>
+													<input type="email" class="form-control signup-req" name="email" id="email" placeholder="user@domain.com">
+												</div>
+												<div class="form-group">
+													<label for="usrPassword" class="sr-only">Password:</label>
+													<input type="password" class="form-control signup-req" name="usrPassword" id="usrPassword" placeholder="password">
+												</div>
+												<div class="form-group">
+												<label for="usrConfirmPassword" class="sr-only">Confirm Password:</label>
+												<input type="password" class="form-control signup-req" name="usrConfirmPassword" id="usrConfirmPassword" placeholder="Retype password">
+												</div>
+												<div class="form-group">
+												<label for="usrPhone" class="sr-only">Contact number:</label>
+												<input type="number" maxlength="10" class="form-control signup-req" name="usrPhone" id="usrPhone" placeholder = "+1 (xxx) xxx-xxx">
+												</div>
+												<div class="form-group">
+												  <label for="profileSelect" class="sr-only">Select profile type:</label>
+												  <select id="profileSelect" name="profileSelect" class="form-control signup-req" style="height: 50px;" data-style="btn-success">
+													<option value="default">Select Option</option>
+													<option value="student">Student</option>
+													<option value="college">College</option>
+													<option value="professional">Professional</option>
+													<option value="employer">Employer</option>
+												  </select>
+												</div>
+												<div id="dynamic">
+												  <div id="collegeWebsiteFormGroup" class="form-group" style="display:none;">
+													<label for="collegeWebsite" class="sr-only">College Website:</label>
+													<input type="text" class="form-control" name="collegeWebsite" id="collegeWebsite" placeholder="College Website">
+												  </div>
+												  
+												  <div id="collegeNameFormGroup" class="form-group" style="display:none;">
+													<label for="collegeName" class="sr-only">College Name:</label>
+													<input type="text" class="form-control" name="collegeName" id="collegeName" placeholder="College Name">
+												  </div>
+												  
+												  <div id="proCompanyFormGroup" class="form-group" style="display:none;">
+													<label for="proCompanyName" class="sr-only">Current/Last Organization:</label>
+													<input type="text" class="form-control" name="proCompanyName" id="proCompanyName" placeholder="Current/Last Organization">
+												  </div>
+												  
+												  <div id="empOrgFormGroup" class="form-group" style="display:none;">
+													<label for="empOrgName" class="sr-only">Organization Name</label>
+													<input type="text" class="form-control" name="empOrgName" id="empOrgName" placeholder="Organization Name">
+												  </div>
+												</div>
+												<button type="submit" class="btn btn-lg btn-primary" style="width:100%;" onclick="signupHandle();">Submit</button>
+												</form>
+										</div>
+										<div>
+									</div>
+								</div>
+							</div>
+					</div>
+				</div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				<p>HireFreshMinds is free, digital portfolio tool for students and recent graduates to visually showcase their academic and professional accomplishments and experiences. </p>
+        			</div>
+        			
+        		</div>
+        	</div>
+        </footer>
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+<script>
+	$('#profileSelect').on('change', function() {
+	  if( this.value === 'default'){
+		$('#dynamic').hide();
+		return;
+	  }
+	  $('#dynamic').hide();
+	  if( this.value === 'college'){
+		$('#collegeNameFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		$('#empOrgFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		
+		$('#collegeWebsiteFormGroup').show();
+		$('#collegeNameFormGroup').show();
+	  }
+	  if( this.value === 'student'){
+		fetchColleges();
+		$('#collegeNameFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		$('#empOrgFormGroup').hide();
+		$('#collegeWebsiteFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		
+		$('#collegeNameFormGroup').show();
+	  }
+	  if( this.value === 'professional'){
+		$('#collegeNameFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		$('#empOrgFormGroup').hide();
+		$('#collegeWebsiteFormGroup').hide();
+		$('#collegeNameFormGroup').hide();
+		
+		$('#proCompanyFormGroup').show();
+	  }
+	  if( this.value === 'employer'){
+		$('#collegeNameFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		$('#empOrgFormGroup').hide();
+		$('#collegeWebsiteFormGroup').hide();
+		$('#collegeNameFormGroup').hide();
+		$('#proCompanyFormGroup').hide();
+		
+		$('#empOrgFormGroup').show();
+	  }
+	  $('#dynamic').show();
+	})
+function fetchColleges(){
+	$.ajax({
+		url : 'fetchColleges.php',
+		data: {"origin":"login-page"},
+		type: 'POST',
+		
+		success : function(data){
+			var collegeArray = JSON.parse(data);
+			window.collegeArray = collegeArray;
+			$( "#collegeName" ).autocomplete({
+			  autoFocus: true,
+			  source: collegeArray
+			});
+		},
+		error : function(data){
+			alert('unable to generate college list');
+		},
+		statusCode : {
+			404: function(){
+				alert("page not found");
+			}
+		}
+	});
+}
+function signupErrorHandle(){
+	$('#errorMsg').hide();
+	$('#formError').html('');
+	var errors = [];
+	$('.signup-req').each(function(index, element) {
+		if($(this).val() == ''){
+			//console.log($(this).attr("id"));
+			if(element.id === 'usrName'){
+				errors.push('Full name is Required');
+			}
+			if(element.id === 'email'){
+				errors.push('Email is Required');
+			}
+			if(element.id === 'usrPassword'){
+				errors.push('Password is Required');
+			}
+			if(element.id === 'usrConfirmPassword'){
+				errors.push('Confirm Password is Required');
+			}
+			if(element.id === 'usrPhone'){
+				errors.push('Phone Number is Required');
+			}
+			
+			
+			
+		}
+		if(element.id === 'profileSelect'){
+			if($(this).val() == 'default'){
+				errors.push('Please select a profile type');
+			}
+			if($(this).val() == 'student'){
+				if($('#collegeName').val() == ''){
+					errors.push('College name is required');
+				}
+			}
+			if($(this).val() == 'college'){
+				if($('#collegeName').val() == ''){
+					errors.push('College name is required');
+				}
+				if($('#collegeWebsite').val() == ''){
+					errors.push('College website is required');
+				}
+			}
+			if($(this).val() == 'professional'){
+				if($('#proCompanyName').val() == ''){
+					errors.push('Company name is required');
+				}
+			}
+			if($(this).val() == 'employer'){
+				if($('#empOrgName').val() == ''){
+					errors.push('Organization name is required');
+				}
+			}
+		}
+	});
+	if($('#usrPassword').val() != $('#usrConfirmPassword').val()){
+		errors.push('Passwords do not match');
+	}
+	var errorHTML = '';
+	errorHTML+=('<p style="color:red;">');
+	for (var val of errors){
+		errorHTML+=(val+'<br/>');
+		//$('#formError').show();
+		
+	}
+	errorHTML+=('</p>');
+	if(errors.length){
+		$('#formError').append(errorHTML);
+		$('#errorMsg').show();
+		$('#formError').show();
+		location.href="#formError";
+		return true;
+	}else{
+		return false;
+	}
+}
+function signupHandle(){
+	console.log($('#collegeName').val());
+	if($('#profileSelect').val() == 'student') {
+		if($.inArray( $('#collegeName').val(), window.collegeArray ) == -1){
+			alert('No');
+			$('#myModal').modal('toggle');
+			$('#myModal').modal('show');
+			return;
+		}
+	}
+	$('#phpMsges').hide();
+	if(!signupErrorHandle()){
+		var data = {
+			usrName : $('#usrName').val(),
+			email : $('#email').val(),
+			usrPassword : $('#usrPassword').val(),
+			usrConfirmPassword : $('#usrConfirmPassword').val(),
+			usrPhone : $('#usrPhone').val(),
+			profileSelect : $('#profileSelect').val(),
+			collegeWebsite : $('#collegeWebsite').val(),
+			collegeName : $('#collegeName').val(),
+			proCompanyName : $('#proCompanyName').val(),
+			empOrgName : $('#empOrgName').val()
+			//var data = {usrName:$('usrName').val(),"email":$('email').val(),'usrPassword':$('usrPassword').val(),'usrPhone':usrPhone,'profileSelect':profileSelect,'collegeWebsite':collegeWebsite,'collegeName': collegeName,'proCompanyName' : proCompanyName,'empOrgName' : empOrgName}
+		}
+		//console.log(z);
+		$.ajax({
+			url : 'signup.php',
+			data: data,
+			type: 'POST',
+			
+			success : function(data){
+				console.log(data)
+				$('#phpMsges').html('');
+				$('#phpMsges').append(data);
+				$('#phpMsges').show();
+			},
+			error : function(data){
+				$('#phpMsges').html('');
+				$('#phpMsges').append(data);
+				$('#phpMsges').show();
+			},
+			statusCode : {
+				404: function(){
+					alert("page not found");
+				}
+			}
+		});
+	}
+}
+</script>
+</html>
