@@ -379,11 +379,13 @@ function signupErrorHandle(){
 }
 function signupHandle(){
 	console.log($('#collegeName').val());
-    if($.inArray( $('#collegeName').val(), window.collegeArray ) != 0){
-		alert('No');
-		$('#myModal').modal('toggle');
-		$('#myModal').modal('show');
-		return;
+	if($('#profileSelect').val() == 'student') {
+		if($.inArray( $('#collegeName').val(), window.collegeArray ) == -1){
+			alert('No');
+			$('#myModal').modal('toggle');
+			$('#myModal').modal('show');
+			return;
+		}
 	}
 	$('#phpMsges').hide();
 	if(!signupErrorHandle()){
