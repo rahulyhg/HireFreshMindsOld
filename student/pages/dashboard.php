@@ -1,13 +1,7 @@
 <?php
 	session_start();
 	if(isset($_SESSION['login_user'])){
-		echo '<script language="javascript">';
-		echo 'alert("message login_user 1")';
-		echo '</script>';
 		if($_SESSION['login_user'] != 0){
-			echo '<script language="javascript">';
-			echo 'alert("message login_user sent")';
-			echo '</script>';
 			session_destroy();
 			$_SESSION['login_user']= ''; // Devalidating Session
 			header("location: /HFM");
@@ -28,19 +22,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Dashboard - College</title>
+    <title>Dashboard - Student</title>
 
+	
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -296,28 +285,45 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> College Profile<span class="fa arrow"></span></a>
-                            <ul	 class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="dashboard.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
 						<li>
-                            <a href="#" onclick="populateDiscover();"><i class="fa fa-files-o fa-fw"></i> Discover<span class="fa fa-arrow-right" style="float:right"></span></a>
-                            
-                            <!-- /.nav-second-level -->
+                            <a href="#" onclick="populateDiscover();" data-toggle="button"><i class="fa fa-files-o fa-fw"></i> Discover<span class="fa fa-arrow-right" style="float:right"></span></a>
                         </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Assessments</a>
+						<li>
+                            <a href="#" id="profileToggle" onclick="populateStudentProfile();" data-toggle="button"><i class="fa fa-files-o fa-fw"></i> My Profile<span class="fa fa-arrow-right" style="float:right"></span></a>
                         </li>
+						<li>
+                            <a href="#" onclick="populateJobs();" data-toggle="button"><i class="fa fa-files-o fa-fw"></i> Jobs<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateMentoring();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Mentoring<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateCourses();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Courses<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateConnections();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Connections<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateTaskList();" data-toggle="button"><i class="fa fa-user fa-fw"></i> Task List<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateCompanies();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Companies<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateAssessments();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Assessments<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateKnowledgeLibrary();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Knowledge Library<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateQA();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Q/A<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<li>
+                            <a href="#" onclick="populateInvite();" data-toggle="button"><i class="fa fa-wrench fa-fw"></i> Invite<span class="fa fa-arrow-right" style="float:right"></span></a>
+                        </li>
+						<!-- May need this in future
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Events<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -340,45 +346,9 @@
                                     <a href="grid.html">Grid</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
+                            <!-- /.nav-second-level --
                         </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Invite<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-						<li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Groups</a>
-                        </li>
-                        <li>
-                            <a href="discover.html"><i class="fa fa-edit fa-fw"></i> User Rights</a>
-                        </li>
-                        
+						-->
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -405,7 +375,7 @@
 									</div>
 									<div class="col-xs-9 text-right">
 										<div class="huge">26</div>
-										<div>Active Users</div>
+										<div>Matching Jobs</div>
 									</div>
 								</div>
 							</div>
@@ -427,7 +397,7 @@
 									</div>
 									<div class="col-xs-9 text-right">
 										<div class="huge">12</div>
-										<div>Views Today</div>
+										<div>Applied Jobs</div>
 									</div>
 								</div>
 							</div>
@@ -449,7 +419,7 @@
 									</div>
 									<div class="col-xs-9 text-right">
 										<div class="huge">124</div>
-										<div>Mentors</div>
+										<div>Saved Jobs</div>
 									</div>
 								</div>
 							</div>
@@ -580,11 +550,111 @@
 				</div>
 				<!-- /.row -->
 				
+				<!-- Add notice item Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+					  <div class="modal-header" style="background-color: darkgray;">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Add new Noticeboard item</h4>
+					  </div>
+					  <div class="modal-body" id="modalBody">
+						<form>
+						<div class="form-group row">
+						  <label for="noticeTitle" class="col-2 col-form-label">Title</label>
+						  <div class="col-8">
+							<input class="form-control" type="text" placeholder="Notice title" id="noticeTitle">
+						  </div>
+						</div>
+						<div class="form-group row">
+						  <label for="noticeDesc" class="col-2 col-form-label">Description</label>
+						  <div class="col-10">
+							<input class="form-control" type="text" placeholder="Description" id="noticeDesc">
+						  </div>
+						</div>
+					
+						<div class="form-group row">
+						  <label for="noticeDate" class="col-2 col-form-label">Date</label>
+						  <div class="col-10">
+							<input class="form-control" type="date" id="noticeDate">
+						  </div>
+						</div>
+						<div class="form-group row">
+						  <label for="noticeTime" class="col-2 col-form-label">Time</label>
+						  <div class="col-10">
+							<input class="form-control" type="time" value="13:45:00" id="noticeTime">
+						  </div>
+						</div>
+						</form>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-default" id="addNotice" onclick="addNoticeItem();">Submit</button>
+						<button type="button" class="btn btn-default" id="closeNotice" data-dismiss="modal">Close</button>
+					  </div>
+					</div>
+
+				  </div>
+				</div>
+				<!-- ./Add notice item Modal -->
+				
+				<!-- Edit notice item Modal -->
+				<div id="editModal" class="modal fade" role="dialog">
+				  <div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+					  <div class="modal-header" style="background-color: darkgray;">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Add new Noticeboard item</h4>
+					  </div>
+					  <div class="modal-body" id="editModalBody">
+						<form>
+						<div class="form-group row">
+						  <label for="editNoticeTitle" class="col-2 col-form-label">Title</label>
+						  <div class="col-8">
+							<input class="form-control" type="text" placeholder="Notice title" id="editNoticeTitle">
+						  </div>
+						</div>
+						<div class="form-group row">
+						  <label for="editNoticeDesc" class="col-2 col-form-label">Description</label>
+						  <div class="col-10">
+							<input class="form-control" type="text" placeholder="Description" id="editNoticeDesc">
+						  </div>
+						</div>
+					
+						<div class="form-group row">
+						  <label for="editNoticeDate" class="col-2 col-form-label">Date</label>
+						  <div class="col-10">
+							<input class="form-control" type="date" id="editNoticeDate">
+						  </div>
+						</div>
+						<div class="form-group row">
+						  <label for="editNoticeTime" class="col-2 col-form-label">Time</label>
+						  <div class="col-10">
+							<input class="form-control" type="time" value="13:45:00" id="editNoticeTime">
+						  </div>
+						</div>
+						<input id="finalID" type = "hidden" value=""/>
+						</form>
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-default" id="modifyNotice" onclick="updateNotice();">Modify</button>
+						<button type="button" class="btn btn-default" id="deleteNotice" onclick="removeNotice();">Delete</button>
+						<button type="button" class="btn btn-default" id="deleteNotice" data-dismiss="modal" style="display:none;">Close</button>
+					  </div>
+					</div>
+
+				  </div>
+				</div>
+				<!-- ./Edit notice item Modal -->
+				
 				<div class="row">
 					<div class="col-lg-8">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<i class="fa fa-bar-chart-o fa-fw"></i> Saved Searches
+								<i class="fa fa-bar-chart-o fa-fw"></i> Recommended Jobs
 								<div class="pull-right">
 									<div class="btn-group">
 										<button type="button" class="btn btn-default btn-xs" data-toggle="button">
@@ -671,69 +741,176 @@
 							</div>
 							<!-- /.panel-body -->
 						</div>
-					</div>
-					<!-- /.col-lg-8 -->
-					<div class="col-lg-4">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<i class="fa fa-bell fa-fw"></i> Notice Board
+								<i class="fa fa-bar-chart-o fa-fw"></i> Saved Searches
+								<div class="pull-right">
+									<div class="btn-group">
+										<button type="button" class="btn btn-default btn-xs" data-toggle="button">
+											View all
+											
+										</button>
+									</div>
+								</div>
 							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="list-group">
 									<a href="#" class="list-group-item">
-										<i class="fa fa-comment fa-fw"></i> Summer Vacation
-										<span class="pull-right text-muted small"><em>05-May-2017</em>
+										<i class="fa fa-comment fa-fw"></i> Google
+										<span class="pull-right text-muted small"><em>Images go here</em>
 										</span>
 									</a>
 									<a href="#" class="list-group-item">
-										<i class="fa fa-twitter fa-fw"></i> Annual Function
-										<span class="pull-right text-muted small"><em>12 minutes ago</em>
+										<i class="fa fa-twitter fa-fw"></i> Apple Inc.
+										<span class="pull-right text-muted small"><em>Images go here</em>
 										</span>
 									</a>
 									<a href="#" class="list-group-item">
-										<i class="fa fa-envelope fa-fw"></i> Group Discussion
-										<span class="pull-right text-muted small"><em>27 minutes ago</em>
+										<i class="fa fa-envelope fa-fw"></i> Microsoft
+										<span class="pull-right text-muted small"><em>Images go here</em>
 										</span>
 									</a>
 									<a href="#" class="list-group-item">
-										<i class="fa fa-tasks fa-fw"></i> Annual Techno Meet
-										<span class="pull-right text-muted small"><em>43 minutes ago</em>
+										<i class="fa fa-envelope fa-fw"></i> Cisco
+										<span class="pull-right text-muted small"><em>Images go here</em>
 										</span>
 									</a>
 									<a href="#" class="list-group-item">
-										<i class="fa fa-upload fa-fw"></i> Sports Competition
-										<span class="pull-right text-muted small"><em>11:32 AM</em>
-										</span>
-									</a>
-									<a href="#" class="list-group-item">
-										<i class="fa fa-bolt fa-fw"></i> Session by Mr.XYZ
-										<span class="pull-right text-muted small"><em>11:13 AM</em>
-										</span>
-									</a>
-									<a href="#" class="list-group-item">
-										<i class="fa fa-warning fa-fw"></i> Student Mentor Sessions
-										<span class="pull-right text-muted small"><em>10:57 AM</em>
-										</span>
-									</a>
-									<a href="#" class="list-group-item">
-										<i class="fa fa-shopping-cart fa-fw"></i> Recruitment Training
-										<span class="pull-right text-muted small"><em>9:49 AM</em>
-										</span>
-									</a>
-									<a href="#" class="list-group-item">
-										<i class="fa fa-money fa-fw"></i> New Enrollments
-										<span class="pull-right text-muted small"><em>Yesterday</em>
+										<i class="fa fa-envelope fa-fw"></i> CS/CE (Financial Analyst)
+										<span class="pull-right text-muted small"><em>Images go here</em>
 										</span>
 									</a>
 								</div>
+							</div>
+							<!-- /.panel-body -->
+						</div>
+					</div>
+					<!-- /.col-lg-8 -->
+					<div class="col-lg-4">
+						<div class="panel panel-default">
+							<div class="panel-heading" style="background-color: lightsteelblue;">
+								<i class="fa fa-bell fa-fw"></i> Notice Board
+								<div class="pull-right">
+                                    <div class="dropdown">
+									  <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
+										<span class="glyphicon glyphicon-cog"></span>
+										<span class="caret"></span>
+									  </button><div class="dropdown-backdrop"></div>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="refreshNoticeboard();" data-toggle="button">Refresh</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#myModal">Add item to Noticeboard</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="populateManageNoticeBoard();">Manage</a></li>
+									  </ul>
+									</div>
+								</div>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div id="spinner" style="display:none;">
+									<center>
+										<i class="fa fa-spinner fa-spin" style="font-size:100px;color:darkgray;padding-top:2%;"></i>
+									</center>
+								</div>
+
+								<div class="list-group" id="noticeBoardList">
+									
+									<a href="#" class="list-group-item list-group-item-info" onclick="removeNotice();" data-toggle="button">
+										<h4 class="list-group-item-heading"><strong>Dummy</strong>
+										<span class="pull-right label label-success">10:00 AM</span></h4>
+										<p class="list-group-item-text">Brief Description</p>
+										<input type="hidden" value=""/>
+									</a>
+									
+								</div>
 								<!-- /.list-group -->
-								<a href="#" onclick="populateManageNoticeBoard();" class="btn btn-default btn-block">Manage Noticeboard</a>
 							</div>
 							<!-- /.panel-body -->
 						</div>
 					</div>
 					<!-- /.col-lg-4 -->
+					<div class="col-lg-4">
+						<div class="panel panel-default">
+							<div class="panel-heading" style="background-color: lightsteelblue;">
+								<i class="fa fa-bell fa-fw"></i> Upcoming Interviews
+								<div class="pull-right">
+                                    <div class="dropdown">
+									  <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
+										<span class="glyphicon glyphicon-cog"></span>
+										<span class="caret"></span>
+									  </button><div class="dropdown-backdrop"></div>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="refreshNoticeboard();" data-toggle="button">Refresh</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#myModal">Add item to Noticeboard</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="populateManageNoticeBoard();">Manage</a></li>
+									  </ul>
+									</div>
+								</div>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div id="spinner" style="display:none;">
+									<center>
+										<i class="fa fa-spinner fa-spin" style="font-size:100px;color:darkgray;padding-top:2%;"></i>
+									</center>
+								</div>
+
+								<div class="list-group" id="noticeBoardList">
+									
+									<a href="#" class="list-group-item list-group-item-info" onclick="removeNotice();" data-toggle="button">
+										<h4 class="list-group-item-heading"><strong>Dummy</strong>
+										<span class="pull-right label label-success">10:00 AM</span></h4>
+										<p class="list-group-item-text">Brief Description</p>
+										<input type="hidden" value=""/>
+									</a>
+									
+								</div>
+								<!-- /.list-group -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+					</div> <!-- /.col-lg-4 -->
+					<div class="col-lg-4">
+						<div class="panel panel-default">
+							<div class="panel-heading" style="background-color: lightsteelblue;">
+								<i class="fa fa-bell fa-fw"></i> Upcoming Assessments
+								<div class="pull-right">
+                                    <div class="dropdown">
+									  <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="false">
+										<span class="glyphicon glyphicon-cog"></span>
+										<span class="caret"></span>
+									  </button><div class="dropdown-backdrop"></div>
+									  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="refreshNoticeboard();" data-toggle="button">Refresh</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#myModal">Add item to Noticeboard</a></li>
+										<li role="presentation"><a role="menuitem" tabindex="-1" href="#" onclick="populateManageNoticeBoard();">Manage</a></li>
+									  </ul>
+									</div>
+								</div>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div id="spinner" style="display:none;">
+									<center>
+										<i class="fa fa-spinner fa-spin" style="font-size:100px;color:darkgray;padding-top:2%;"></i>
+									</center>
+								</div>
+
+								<div class="list-group" id="noticeBoardList">
+									
+									<a href="#" class="list-group-item list-group-item-info" onclick="removeNotice();" data-toggle="button">
+										<h4 class="list-group-item-heading"><strong>Dummy</strong>
+										<span class="pull-right label label-success">10:00 AM</span></h4>
+										<p class="list-group-item-text">Brief Description</p>
+										<input type="hidden" value=""/>
+									</a>
+									
+								</div>
+								<!-- /.list-group -->
+							</div>
+							<!-- /.panel-body -->
+						</div>
+					</div> <!-- /.col-lg-4 -->
 				
 				</div> 
 				<!-- /.row -->
@@ -745,19 +922,11 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script
-	src="https://code.jquery.com/jquery-2.2.4.min.js"
-	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	crossorigin="anonymous"></script>
-
+	<script src="lib/jquery-2.2.4.min.js"></script>
+	
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="../vendor/raphael/raphael.min.js"></script>
    <!-- <script src="../vendor/morrisjs/morris.min.js"></script>
     <script src="../data/morris-data.js"></script>-->
 
@@ -765,12 +934,11 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 	<script src="dashboard.js"></script>
 	
-	<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
 	
-	<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-	
-	<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
-	
+	<script src="lib/jquery-ui.js"></script>
+	<link href="lib/jquery-ui.css" rel="Stylesheet"></link>
+	<script src="lib/jquery.dataTables.min.js"></script>
+	<script src="lib/dataTables.bootstrap.min.js"></script>
 </body>
 
 </html>
