@@ -62,6 +62,7 @@
 		//header("location: profile.php"); // Redirecting To Other Page
 	} else {
 		$error = "Username or Password is invalid";
+		echo $error;
 	}
 		mysqli_close($connection); // Closing Connection
 	}
