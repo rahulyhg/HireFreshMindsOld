@@ -1,0 +1,239 @@
+<style>
+/* Tabs panel */
+.tabbable-panel {
+  /*border:1px solid #eee;*/
+  padding: 10px;
+}
+
+/* Default mode */
+.tabbable-line > .nav-tabs {
+  border: none;
+  margin: 0px;
+}
+.tabbable-line > .nav-tabs > li {
+  margin-right: 2px;
+}
+.tabbable-line > .nav-tabs > li > a {
+  border: 0;
+  margin-right: 0;
+  color: #737373;
+}
+.tabbable-line > .nav-tabs > li > a > i {
+  color: #a6a6a6;
+}
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+  border-bottom: 4px solid #fbcdcf;
+}
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+  color: #a6a6a6;
+}
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
+}
+.tabbable-line > .nav-tabs > li.active {
+  border-bottom: 4px solid #f3565d;
+  position: relative;
+}
+.tabbable-line > .nav-tabs > li.active > a {
+  border: 0;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.active > a > i {
+  color: #404040;
+}
+.tabbable-line > .tab-content {
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+.portlet .tabbable-line > .tab-content {
+  padding-bottom: 0;
+}
+
+/* Below tabs mode */
+
+.tabbable-line.tabs-below > .nav-tabs > li {
+  border-top: 4px solid transparent;
+}
+.tabbable-line.tabs-below > .nav-tabs > li > a {
+  margin-top: 0;
+}
+.tabbable-line.tabs-below > .nav-tabs > li:hover {
+  border-bottom: 0;
+  border-top: 4px solid #fbcdcf;
+}
+.tabbable-line.tabs-below > .nav-tabs > li.active {
+  margin-bottom: -2px;
+  border-bottom: 0;
+  border-top: 4px solid #f3565d;
+}
+.tabbable-line.tabs-below > .tab-content {
+  margin-top: -10px;
+  border-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+</style>
+
+<div class="containerInner">
+    <div class="row">
+		<div class="col-md-12">
+			<h3>Find people to follow</h3>
+
+			<div class="tabbable-panel">
+				<div class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#followAll" data-toggle="tab">
+							All </a>
+						</li>
+						<li>
+							<a href="#followStudent" data-toggle="tab">
+							Student </a>
+						</li>
+						<li>
+							<a href="#followFresher" data-toggle="tab">
+							Fresher </a>
+						</li>
+						<li>
+							<a href="#followProfessional" data-toggle="tab">
+							Professional </a>
+						</li>
+						<li>
+							<a href="#followAcademician" data-toggle="tab">
+							Acamedician </a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="followAll">
+							<div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;">
+								<div class="row panel">
+									<div class="col-md-4 bg_blur" style=" margin-top:70px;">
+										<a href="#" class="follow_btn hidden-xs"><i class="fa fa-plus fa-2x text-success" aria-hidden="true"></i></a>
+										
+									</div>
+									<div class="col-md-8  col-xs-12">
+									   <img src="" alt="image" class="img-thumbnail picture hidden-xs" />
+									   <img src="" alt="image" class="img-thumbnail visible-xs picture_mob" />
+									   <div class="header">
+											<h2>Eric Green</h2>
+											<h3>Web Developer</h3>
+											<span>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+									   </div>
+									</div>
+								</div>   
+							</div>
+							<div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;">
+								<div class="row panel">
+									<div class="col-md-4 bg_blur" style=" margin-top:70px;">
+										<a href="#" class="follow_btn hidden-xs"><i class="fa fa-plus fa-2x text-success" aria-hidden="true"></i></a>
+										
+									</div>
+									<div class="col-md-8  col-xs-12">
+									   <img src="" alt="image" class="img-thumbnail picture hidden-xs" />
+									   <img src="" alt="image" class="img-thumbnail visible-xs picture_mob" />
+									   <div class="header">
+											<h2>Eric Green</h2>
+											<h3>Web Developer</h3>
+											<span>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+									   </div>
+									</div>
+								</div>   
+							</div>
+						</div>
+						<div class="tab-pane" id="followStudent">
+							<div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;">
+								<div class="row panel">
+									<div class="col-md-4 bg_blur" style=" margin-top:70px;">
+										<a href="#" class="follow_btn hidden-xs"><i class="fa fa-plus fa-2x text-success" aria-hidden="true"></i></a>
+										
+									</div>
+									<div class="col-md-8  col-xs-12">
+									   <img src="" alt="image" class="img-thumbnail picture hidden-xs" />
+									   <img src="" alt="image" class="img-thumbnail visible-xs picture_mob" />
+									   <div class="header">
+											<h2>Eric Green</h2>
+											<h3>Web Developer</h3>
+											<span>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+									   </div>
+									</div>
+								</div>   
+							</div>
+						</div>
+						<div class="tab-pane" id="followFresher">
+							<div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;">
+								<div class="row panel">
+									<div class="col-md-4 bg_blur" style=" margin-top:70px;">
+										<a href="#" class="follow_btn hidden-xs"><i class="fa fa-plus fa-2x text-success" aria-hidden="true"></i></a>
+										
+									</div>
+									<div class="col-md-8  col-xs-12">
+									   <img src="" alt="image" class="img-thumbnail picture hidden-xs" />
+									   <img src="" alt="image" class="img-thumbnail visible-xs picture_mob" />
+									   <div class="header">
+											<h2>Eric Green</h2>
+											<h3>Web Developer</h3>
+											<span>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+									   </div>
+									</div>
+								</div>   
+							</div>
+						</div>
+						<div class="tab-pane" id="followProfessional">
+							<div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;">
+								<div class="row panel">
+									<div class="col-md-4 bg_blur" style=" margin-top:70px;">
+										<a href="#" class="follow_btn hidden-xs"><i class="fa fa-plus fa-2x text-success" aria-hidden="true"></i></a>
+										
+									</div>
+									<div class="col-md-8  col-xs-12">
+									   <img src="" alt="image" class="img-thumbnail picture hidden-xs" />
+									   <img src="" alt="image" class="img-thumbnail visible-xs picture_mob" />
+									   <div class="header">
+											<h2>Eric Green</h2>
+											<h3>Web Developer</h3>
+											<span>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+									   </div>
+									</div>
+								</div>   
+							</div>
+						</div>
+						<div class="tab-pane" id="followAcademician">
+							<div class="col-md-6" style="margin-top: 20px; margin-bottom: 20px;">
+								<div class="row panel">
+									<div class="col-md-4 bg_blur" style=" margin-top:70px;">
+										<a href="#" class="follow_btn hidden-xs"><i class="fa fa-plus fa-2x text-success" aria-hidden="true"></i></a>
+										
+									</div>
+									<div class="col-md-8  col-xs-12">
+									   <img src="" alt="image" class="img-thumbnail picture hidden-xs" />
+									   <img src="" alt="image" class="img-thumbnail visible-xs picture_mob" />
+									   <div class="header">
+											<h2>Eric Green</h2>
+											<h3>Web Developer</h3>
+											<span>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</span>
+									   </div>
+									</div>
+								</div>   
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<center>
+</center>
+<br>
+<br>
