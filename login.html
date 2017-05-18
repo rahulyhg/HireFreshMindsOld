@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
         <link rel="stylesheet" href="assets/css/style.css">
 
 		<script src="lib/jquery-2.2.4.min.js"></script>
@@ -24,408 +23,429 @@
 		<script src="lib/bootstrap.min.js"></script>
 	
 		<script src="lib/dataTables.bootstrap.min.js"></script>
+		<style>
+			/*Font CDN*/
 
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+		@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
 
-        <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
-    </head>
+		/*Font CDN*/
 
-    <body>
-		<div id="myModal" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
 
-			<!-- Modal content-->
-			<div class="modal-content">
-			  <div class="modal-header" style="background-color: coral;">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">College Name not found</h4>
-			  </div>
-			  <div class="modal-body">
-				<p>Please select a college name only from the dropdown list to proceed!</p>
-			  </div>
-			  <div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			  </div>
-			</div>
+		/*Global CSS*/
 
-		  </div>
-		</div>
-        <!-- Top content -->
-        <div class="top-content">
-        	
-            <div class="inner-bg">
-				<div class="row">
-					<div class="col-md-1">
-					</div>
-					<div class="col-md-3">
-						<div class="container">
-							
-							<div class="row">
-								<div class="col-sm-5 text">
-									<h1><strong>User</strong> Login</h1>
-									<div class="description">
-										<p>
-											Please Login to your account to continue.
-										</p>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-sm-5">
-									<div class="form-box">
-										<div class="form-top">
-											<div class="form-top-left">
-												<h3>Login to you account</h3>
-												<p>Enter username and password to log on:</p>
-											</div>
-											<div class="form-top-right">
-												<i class="fa fa-lock"></i>
-											</div>
-										</div>
-										<div class="form-bottom">
-											<form action="loginHandler.php" method="post" role="form" class="login-form">
-												<div class="form-group">
-													<label class="sr-only" for="form-username">Username</label>
-													<input type="text" placeholder="Username" class="form-username form-control" name="username" id="username">
-												</div>
-												<div class="form-group">
-													<label class="sr-only" for="form-password">Password</label>
-													<input type="password" placeholder="Password" class="form-password form-control" name="password" id="password">
-												</div>
-												<button type="submit" id="submit" class="btn">Sign in</button>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-					</div>
-					<div class="col-md-2"> <!-- Signup form -->
-						<div class="container">
-							<div class="row">
-								<div class="col-sm-5 text">
-									<h1><strong>New User?</strong> Sign Up</h1>
-									<div class="description">
-										<p>
-											Complete the below form and click submit.
-										</p>
-									</div>
-								</div>
-							</div>
+		html,
+		body {
+			font-family: 'Roboto', sans-serif;
+			font-size: 20px;
+			height: 100%;
+			background-color: gainsboro;
+		}
+		a,
+		a:hover,
+		a:focus,
+		focus {
+			outline: none !important;
+			text-decoration: none;
+			color: #fff;
+		}
+		.container{
+			max-width:800px;
+			width: 100%;
+			
+		}
+		li,
+		ul {
+			margin: 0;
+			padding: 0;
+		}
 
-							<div class="row">
-								<div class="col-sm-5">
-									<div class="form-box">
-										<div class="form-top">
-											<div class="form-top-left">
-												<h3>Registration</h3>
-												<p>All fields are required.</p>
-											</div>
-											<div class="form-top-right">
-												<i class="fa fa-user"></i>
-											</div>
-										</div>
-										<div class="form-bottom">
-											<h3 style="color:#d9edf7;display:none;" id="errorMsg">The following error(s) have occured: </h3>
-											<div id="formError" style="display:none;">
-												
-											</div>
-											<div id="phpMsges" style="display:none;">
-												
-											</div>
-											<form method="post" role="form" class="login-form">
-												<div class="form-group">
-													<label for="usrName" class="sr-only">Name</label>
-													<input type="text" class="form-control signup-req" name="usrName" id="usrName" placeholder="Full name">
-												</div>
-												<div class="form-group">
-													<label for="email" class="sr-only">Email address:</label>
-													<input type="email" class="form-control signup-req" name="email" id="email" placeholder="user@domain.com">
-												</div>
-												<div class="form-group">
-													<label for="usrPassword" class="sr-only">Password:</label>
-													<input type="password" class="form-control signup-req" name="usrPassword" id="usrPassword" placeholder="password">
-												</div>
-												<div class="form-group">
-												<label for="usrConfirmPassword" class="sr-only">Confirm Password:</label>
-												<input type="password" class="form-control signup-req" name="usrConfirmPassword" id="usrConfirmPassword" placeholder="Retype password">
-												</div>
-												<div class="form-group">
-												<label for="usrPhone" class="sr-only">Contact number:</label>
-												<input type="number" maxlength="10" class="form-control signup-req" name="usrPhone" id="usrPhone" placeholder = "+1 (xxx) xxx-xxx">
-												</div>
-												<div class="form-group">
-												  <label for="profileSelect" class="sr-only">Select profile type:</label>
-												  <select id="profileSelect" name="profileSelect" class="form-control signup-req" style="height: 50px;" data-style="btn-success">
-													<option value="default">Select Option</option>
-													<option value="student">Student</option>
-													<option value="college">College</option>
-													<option value="professional">Professional</option>
-													<option value="employer">Employer</option>
-												  </select>
-												</div>
-												<div id="dynamic">
-												  <div id="collegeWebsiteFormGroup" class="form-group" style="display:none;">
-													<label for="collegeWebsite" class="sr-only">College Website:</label>
-													<input type="text" class="form-control" name="collegeWebsite" id="collegeWebsite" placeholder="College Website">
-												  </div>
-												  
-												  <div id="collegeNameFormGroup" class="form-group" style="display:none;">
-													<label for="collegeName" class="sr-only">College Name:</label>
-													<input type="text" class="form-control" name="collegeName" id="collegeName" placeholder="College Name">
-												  </div>
-												  
-												  <div id="proCompanyFormGroup" class="form-group" style="display:none;">
-													<label for="proCompanyName" class="sr-only">Current/Last Organization:</label>
-													<input type="text" class="form-control" name="proCompanyName" id="proCompanyName" placeholder="Current/Last Organization">
-												  </div>
-												  
-												  <div id="empOrgFormGroup" class="form-group" style="display:none;">
-													<label for="empOrgName" class="sr-only">Organization Name</label>
-													<input type="text" class="form-control" name="empOrgName" id="empOrgName" placeholder="Organization Name">
-												  </div>
-												</div>
-												<button type="submit" class="btn btn-lg btn-primary" style="width:100%;" onclick="signupHandle();">Submit</button>
-												</form>
-										</div>
-										<div>
-									</div>
-								</div>
-							</div>
-					</div>
-				</div>
+		/*Global CSS*/
+
+
+		/*Main CSS*/
+
+
+		/*Login Signup Page*/
+
+		.bg-image {
+			background: url(http://jskrishna.com/work/merkury/images/background-login.jpg) no-repeat 0 0 / cover;
+			position: relative;
+			width: 100%;
+			height: 100vh;
+			display: table;
+		}
+
+		.login-header {
+			display: inline-block;
+			width: 100%;
+			background: #0e1a35;
+		}
+
+		.login-signup {
+			display: table-cell;
+			vertical-align: middle;
+			width: 100%;
+		}
+
+		.login-logo img {
+			cursor: pointer;
+			max-width: 80px;
+			padding: 23px 15px 22px;
+			width: 100%;
+		}
+
+		.login-header .navbar-right {
+			margin-right: 0px;
+		}
+
+		.login-header .nav-tabs > li.active > a,
+		.login-header .nav-tabs > li.active > a:focus,
+		.login-header .nav-tabs > li.active > a:hover {
+			background-color: transparent;
+			border: none;
+			color: #fff;
+		}
+
+		.login-header .nav-tabs > li > a {
+			border: medium none;
+			border-radius: 0;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 48px;
+			padding: 15px 30px;
+			color: #fff;
+		}
+
+		.login-header .nav-tabs {
+			border-bottom: none;
+		}
+
+		.login-header .nav-tabs > li {
+			margin-bottom: 0px;
+		}
+
+		.login-header .nav > li > a:focus,
+		.login-header .nav > li > a:hover {
+			background: none;
+			text-decoration: none;
+		}
+
+		.login-header .nav-tabs > li.active {
+			border-bottom: 6px solid #5584ff;
+		}
+
+		.login-inner h1 {
+			color: #8492af;
+			font-size: 35px;
+			font-weight: 300;
+			text-align: center;
+			margin-top: 0;
+		}
+
+		.login-inner h1 span {
+			color: #5584ff;
+		}
+
+		.login-form {
+			text-align: center;
+		}
+
+		.login-form input {
+			-moz-border-bottom-colors: none;
+			-moz-border-left-colors: none;
+			-moz-border-right-colors: none;
+			-moz-border-top-colors: none;
+			background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+			border-color: -moz-use-text-color -moz-use-text-color #d4d9e3;
+			border-image: none;
+			border-style: none none solid;
+			border-width: medium medium 1px;
+			font-size: 13px;
+			font-weight: 300;
+			width: 100%;
+			color: #8492af;
+			padding: 15px 50px;
+			font-size: 17px;
+			max-width: 550px;
+		}
+
+		.login-form label {
+			margin-bottom: 30px;
+			width: 100%;
+		}
+
+		.user input {
+			background: rgba(0, 0, 0, 0) url("") no-repeat scroll 7px 12px;
+		}
+
+		.pass input {
+			background: rgba(0, 0, 0, 0) url("") no-repeat scroll 7px 12px;
+		}
+
+		.mail input {
+			background: rgba(0, 0, 0, 0) url("") no-repeat scroll 4px 12px;
+		}
+
+		.login-signup .tab-content {
+			background: #ffffff none repeat scroll 0 0;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+			display: inline-block;
+			margin-top: -8px;
+			width: 100%;
+		}
+
+		.form-btn {
+			background: #5584ff none repeat scroll 0 0;
+			border: medium none;
+			border-radius: 100px;
+			color: #ffffff;
+			font-weight: 400;
+			max-width: 250px;
+			padding: 10px 0;
+			position: relative;
+			width: 100%;
+			margin-bottom: 10px;
+			box-shadow: 0 2px 8px #d2d2d2;
+			-moz-box-shadow: 0 2px 8px #d2d2d2;
+			-webkit-box-shadow: 0 2px 8px #d2d2d2;
+		}
+
+		/*.form-btn::before {
+			content: "?";
+			font-family: FontAwesome;
+			position: absolute;
+			right: 17px;
+			top: 9px;
+		}*/
+
+		.form-details {
+			padding: 35px 0;
+		}
+
+		.tab-content .tab-pane {
+			padding:35px 0;
+		}
+
+
+		/*Login Signup Page*/
+
+
+
+		@media only screen and (max-device-width: 767px) {
+			.login-logo img {
+				margin: 0 auto;
+			}
+			.login-details .nav-tabs > li {
+				text-align: center;
+				width: 50%;
+			}
+			.login-signup .login-inner h1 {
+				font-size: 26px;
+				margin-bottom: 0;
+				margin-top: 10px;
+			}
+			.login-inner .login-form input {
+				font-size: 15px;
+				max-width: 100%;
+				padding: 15px 45px;
+			}
+			.login-inner .form-details {
+				padding: 25px;
+			}
+			.login-inner .login-form label {
+				margin-bottom: 20px;
+				width: 100%;
+			}
+			.login-inner .form-btn {
+				margin: 0;
+				max-width: 180px;
+			}
+			.tab-content .tab-pane {
+				padding: 20px 0;
+			}
+			#navigation .navi a {
+				font-size: 14px;
+				padding: 20px;
+				text-align: center;
+			}
+			#navigation .navi i {
+				margin-right: 0px;
+			}
+			#navigation .navi a:hover,
+			#navigation .navi .active a {
+				background: #122143 none repeat scroll 0 0;
+				border-left: none;
+				display: block;
+				padding-left: 20px;
+			}
+			header .header-top img {
+				max-width: 38px !important;
+			}
+			.v-align header {
+				padding: 12px 15px;
+			}
+			header .header-top li {
+				padding-left: 13px;
+				padding-right: 6px;
+			}
+			.navbar-default .navbar-toggle {
+				border-color: rgba(0, 0, 0, 0);
+			}
+			.navbar-header .navbar-toggle {
+				float: left;
+				margin: 0;
+				padding: 0;
+				top: 12px;
+			}
+			button,
+				html [type="button"],
+				[type="reset"],
+				[type="submit"] {
+					outline: medium none;
+			}
+			.user-dashboard .sales h2 {
+				color: #8492af;
+				float: left;
+				font-size: 14px;
+				font-weight: 600;
+				margin: 0;
+				padding: 13px 0 0;
+		}
+			.user-dashboard .btn.btn-secondary.btn-lg.dropdown-toggle > span {
+				font-size: 11px;
+		}
+			.user-dashboard .sales button {
+				font-size: 11px;
+				padding-right: 23px;
+		}  
+			.user-dashboard .sales h2 {
+			font-size: 12px;
+		}
+		.gutter{
+			padding: 0;
+		}
+		}
+
+		@media only screen and (max-device-width: 992px) {
+			header .header-top li {
+				padding-left: 20px !important;
+				padding-right: 0;
+		}
+			header .logo img {
+				max-width: 125px !important;
+		}
+
+		}
+
+		@media only screen and (min-device-width: 767px) and (max-device-width: 998px){
+			  .user-dashboard .header-top {
+				padding-top: 5px;
+		}
+			.user-dashboard .header-rightside {
+				display: inline-block;
+				float: left;
+				width: 100%;
+		}
+			.user-dashboard .header-rightside .header-top img {
+				max-width: 41px !important;
+		} 
+			.user-dashboard .sales button {
+			font-size: 10px;
+		}
+			.user-dashboard .btn.btn-secondary.btn-lg.dropdown-toggle > span {
+			font-size: 12px;
+		}
+			.user-dashboard .sales h2 {
+			font-size: 15px;
+		}
+		}
+		@media only screen and (min-device-width:998px) and (max-device-width: 1350px){
+				#navigation .logo img {
+			max-width: 130px;
+			padding: 16px 0 17px;
+			width: 100%;
+		}
+		}
+
+		</style>
+</head>
+<body>
+<div class="col-md-8 col-md-offset-2">
+    <div class="login-area">
+        <div class="bg-image">
+            <div class="login-signup">
+                <div class="container">
+                    <div class="login-header">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="login-logo">
+                                    <img src="logo.png" alt="merkury_logo" class="img-responsive">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="login-details">
+                                    <ul class="nav nav-tabs navbar-right">
+                                        <li><a data-toggle="tab" href="#register">Register</a></li>
+                                        <li class="active"><a data-toggle="tab" href="#login">Login</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="tab-content">
+                        <div id="register" class="tab-pane">
+                           <div class="login-inner">
+                                <div class="title">
+                                    <h1>Welcome <span>back!</span></h1>
+                                </div>
+                                <div class="login-form">
+                                    <form>
+                                        <div class="form-details">
+                                            <label class="user">
+                                                <input type="text" name="username" placeholder="Full Name" id="username">
+                                            </label>
+                                            <label class="mail">
+                                                <input type="email" name="mail" placeholder="Email Address" id="mail">
+                                            </label>
+                                            <label class="pass">
+                                                <input type="password" name="passsword" placeholder="Password" id="password">
+                                            </label>
+                                            <label class="pass">
+                                                <input type="password" name="passsword" placeholder="Confirm Password" id="password">
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="form-btn" onsubmit="">Sent</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="login" class="tab-pane fade in active">
+                            <div class="login-inner">
+                                <div class="title">
+                                    <h1>Welcome <span>back!</span></h1>
+                                </div>
+                                <div class="login-form">
+                                    <form>
+                                        <div class="form-details">
+                                            <label class="user">
+                                                <input type="text" name="username" placeholder="Username" id="username">
+                                            </label>
+                                            <label class="pass">
+                                                <input type="password" name="passsword" placeholder="Password" id="password">
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="form-btn" onsubmit="">Sent</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
         </div>
-
-        <!-- Footer -->
-        <footer>
-        	<div class="container">
-        		<div class="row">
-        			
-        			<div class="col-sm-8 col-sm-offset-2">
-        				<div class="footer-border"></div>
-        				<p>HireFreshMinds is free, digital portfolio tool for students and recent graduates to visually showcase their academic and professional accomplishments and experiences. </p>
-        			</div>
-        			
-        		</div>
-        	</div>
-        </footer>
-
-        <!-- Javascript -->
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
-        
-        <!--[if lt IE 10]>
-            <script src="assets/js/placeholder.js"></script>
-        <![endif]-->
-
-    </body>
-<script>
-	$('#profileSelect').on('change', function() {
-	  if( this.value === 'default'){
-		$('#dynamic').hide();
-		return;
-	  }
-	  $('#dynamic').hide();
-	  if( this.value === 'college'){
-		$('#collegeNameFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		$('#empOrgFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		
-		$('#collegeWebsiteFormGroup').show();
-		$('#collegeNameFormGroup').show();
-	  }
-	  if( this.value === 'student'){
-		fetchColleges();
-		$('#collegeNameFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		$('#empOrgFormGroup').hide();
-		$('#collegeWebsiteFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		
-		$('#collegeNameFormGroup').show();
-	  }
-	  if( this.value === 'professional'){
-		$('#collegeNameFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		$('#empOrgFormGroup').hide();
-		$('#collegeWebsiteFormGroup').hide();
-		$('#collegeNameFormGroup').hide();
-		
-		$('#proCompanyFormGroup').show();
-	  }
-	  if( this.value === 'employer'){
-		$('#collegeNameFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		$('#empOrgFormGroup').hide();
-		$('#collegeWebsiteFormGroup').hide();
-		$('#collegeNameFormGroup').hide();
-		$('#proCompanyFormGroup').hide();
-		
-		$('#empOrgFormGroup').show();
-	  }
-	  $('#dynamic').show();
-	})
-function fetchColleges(){
-	$.ajax({
-		url : 'fetchColleges.php',
-		data: {"origin":"login-page"},
-		type: 'POST',
-		
-		success : function(data){
-			var collegeArray = JSON.parse(data);
-			window.collegeArray = collegeArray;
-			$( "#collegeName" ).autocomplete({
-			  autoFocus: true,
-			  source: collegeArray
-			});
-		},
-		error : function(data){
-			alert('unable to generate college list');
-		},
-		statusCode : {
-			404: function(){
-				alert("page not found");
-			}
-		}
-	});
-}
-function signupErrorHandle(){
-	$('#errorMsg').hide();
-	$('#formError').html('');
-	var errors = [];
-	$('.signup-req').each(function(index, element) {
-		if($(this).val() == ''){
-			//console.log($(this).attr("id"));
-			if(element.id === 'usrName'){
-				errors.push('Full name is Required');
-			}
-			if(element.id === 'email'){
-				errors.push('Email is Required');
-			}
-			if(element.id === 'usrPassword'){
-				errors.push('Password is Required');
-			}
-			if(element.id === 'usrConfirmPassword'){
-				errors.push('Confirm Password is Required');
-			}
-			if(element.id === 'usrPhone'){
-				errors.push('Phone Number is Required');
-			}
-			
-			
-			
-		}
-		if(element.id === 'profileSelect'){
-			if($(this).val() == 'default'){
-				errors.push('Please select a profile type');
-			}
-			if($(this).val() == 'student'){
-				if($('#collegeName').val() == ''){
-					errors.push('College name is required');
-				}
-			}
-			if($(this).val() == 'college'){
-				if($('#collegeName').val() == ''){
-					errors.push('College name is required');
-				}
-				if($('#collegeWebsite').val() == ''){
-					errors.push('College website is required');
-				}
-			}
-			if($(this).val() == 'professional'){
-				if($('#proCompanyName').val() == ''){
-					errors.push('Company name is required');
-				}
-			}
-			if($(this).val() == 'employer'){
-				if($('#empOrgName').val() == ''){
-					errors.push('Organization name is required');
-				}
-			}
-		}
-	});
-	if($('#usrPassword').val() != $('#usrConfirmPassword').val()){
-		errors.push('Passwords do not match');
-	}
-	var errorHTML = '';
-	errorHTML+=('<p style="color:red;">');
-	for (var val of errors){
-		errorHTML+=(val+'<br/>');
-		//$('#formError').show();
-		
-	}
-	errorHTML+=('</p>');
-	if(errors.length){
-		$('#formError').append(errorHTML);
-		$('#errorMsg').show();
-		$('#formError').show();
-		location.href="#formError";
-		return true;
-	}else{
-		return false;
-	}
-}
-function signupHandle(){
-	console.log($('#collegeName').val());
-	if($('#profileSelect').val() == 'student') {
-		if($.inArray( $('#collegeName').val(), window.collegeArray ) == -1){
-			alert('No');
-			$('#myModal').modal('toggle');
-			$('#myModal').modal('show');
-			return;
-		}
-	}
-	$('#phpMsges').hide();
-	if(!signupErrorHandle()){
-		var data = {
-			usrName : $('#usrName').val(),
-			email : $('#email').val(),
-			usrPassword : $('#usrPassword').val(),
-			usrConfirmPassword : $('#usrConfirmPassword').val(),
-			usrPhone : $('#usrPhone').val(),
-			profileSelect : $('#profileSelect').val(),
-			collegeWebsite : $('#collegeWebsite').val(),
-			collegeName : $('#collegeName').val(),
-			proCompanyName : $('#proCompanyName').val(),
-			empOrgName : $('#empOrgName').val()
-			//var data = {usrName:$('usrName').val(),"email":$('email').val(),'usrPassword':$('usrPassword').val(),'usrPhone':usrPhone,'profileSelect':profileSelect,'collegeWebsite':collegeWebsite,'collegeName': collegeName,'proCompanyName' : proCompanyName,'empOrgName' : empOrgName}
-		}
-		//console.log(z);
-		$.ajax({
-			url : 'signup.php',
-			data: data,
-			type: 'POST',
-			
-			success : function(data){
-				console.log(data)
-				$('#phpMsges').html('');
-				$('#phpMsges').append(data);
-				$('#phpMsges').show();
-			},
-			error : function(data){
-				$('#phpMsges').html('');
-				$('#phpMsges').append(data);
-				$('#phpMsges').show();
-			},
-			statusCode : {
-				404: function(){
-					alert("page not found");
-				}
-			}
-		});
-	}
-}
-</script>
+    </div>
+</div>
 </html>
